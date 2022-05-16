@@ -1,0 +1,10 @@
+#Example
+
+$serverlist = Get-Content hosts.txt
+$user = "domain.example.com\$env:admin_user"
+$pass = ConvertTo-SecureString $env:admin_pass -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ($user, $pass)
+$s = New-PSSession -ComputerName $serverlist -Credential $cred
+$Distr = "\\smb-share.example.com\share\MSSQL2019\"
+$DistrSMS = "\\smb-share.example.com\share\SSMS-Setup-ENU.exe"
+$Dest = "E:\distr\MSSQL\"
